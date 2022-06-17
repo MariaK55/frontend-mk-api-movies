@@ -9,7 +9,7 @@ const API_URL="https://api.themoviedb.org/3/movie/popular?api_key=af49052b6dca8a
 const API_SEARCH="https://api.themoviedb.org/3/search/movie?api_key=af49052b6dca8ae25f29b6a5d0f01aa8&query"
 
 function App() {
-  const[movies, setMovies]= useState([]);
+  const [movies, setMovies]= useState([]);
   const [query, setQuery]=useState('');
 
   //const example=["one", "two"];
@@ -46,15 +46,15 @@ function App() {
     
     <Navbar bg="dark" expand="lg" variant="dark">
     <Container fluid> 
+        <Navbar.Brand href="/home"> Movie List</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll"></Navbar.Toggle> 
 
           <Navbar.Collapse id="navbarScroll">
-            <Nav 
-            className="me-auto my-2 my-lg-3"
+            <Nav className="me-auto my-2 my-lg-3 "
             style={{maxHeight:'100px'}}
             navbarScroll></Nav>
 
-            <Form className="d-flex" onSubmit={searchMovie} autoComplete="off">
+            <Form className="d-flex" onSubmit={searchMovie} autoComplete="on">
               <FormControl
               type="search"
               placeholder="Movie to search"
@@ -74,9 +74,11 @@ function App() {
           {movies.map((movieReq)=>
           <MovieBox key={movieReq.id} {...movieReq}/>)}
             </div>
+           
     </div>
       ):(
-        <h2>Sorry! No movies found :(</h2>
+        
+        <h2>Oops! No movies found :(</h2>
       )}
     </div>   
     
